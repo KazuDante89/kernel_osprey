@@ -96,6 +96,8 @@ bool is_display_on()
 	return display_on;
 }
 
+extern void lazyplug_enter_lazy(bool enter, bool video);
+
 void mdss_dsi_panel_pwm_cfg(struct mdss_dsi_ctrl_pdata *ctrl)
 {
 	if (ctrl->pwm_pmi)
@@ -888,6 +890,7 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 
 
 	display_on = true;
+	lazyplug_enter_lazy(false, false);
 
 #ifdef CONFIG_POWERSUSPEND
 	set_power_suspend_state_panel_hook(POWER_SUSPEND_INACTIVE);
@@ -1022,6 +1025,10 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 
 	mdss_dsi_panel_off_in_prog_notify(pdata, pinfo);
 	display_on = false;
+	if ( (asus_lcd_id[0]=='2') || (asus_lcd_id[0]=='3') )
+	    resume2s=0;
+
+        lazyplug_enter_lazy(true, false);
 
 #ifdef CONFIG_POWERSUSPEND
 	set_power_suspend_state_panel_hook(POWER_SUSPEND_ACTIVE);
