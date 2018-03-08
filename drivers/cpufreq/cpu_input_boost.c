@@ -250,7 +250,7 @@ static int do_cpu_boost(struct notifier_block *nb,
 	uint32_t boost_freq, state;
 	bool ret;
 
-	if (action != CPUFREQ_ADJUST)
+	if (action != CPUFREQ_ADJUST || initd)
 		return NOTIFY_OK;
 
 	state = get_boost_state(b);
