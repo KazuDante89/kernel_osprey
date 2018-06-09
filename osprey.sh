@@ -53,7 +53,6 @@ zip -r9 $FINAL_ZIP * -x *.zip $FINAL_ZIP > /dev/null
 
 echo "Flashable zip Created"
 echo "Flashable zip is stored in $Anykernel_DIR folder with name $FINAL_ZIP"
-exit 0
 else
 echo "Kernel not compiled,fix errors and compile again"
 exit 1
