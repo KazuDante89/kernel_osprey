@@ -1047,8 +1047,6 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 
 	mdss_dsi_panel_off_in_prog_notify(pdata, pinfo);
 	display_on = false;
-	if ( (asus_lcd_id[0]=='2') || (asus_lcd_id[0]=='3') )
-	    resume2s=0;
 
         lazyplug_enter_lazy(true, false);
 
