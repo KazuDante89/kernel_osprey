@@ -14,6 +14,7 @@
 #include <linux/slab.h>
 #include <linux/tick.h>
 #include "cpufreq_governor.h"
+#include <linux/err.h>
 
 /* Conservative governor macros */
 #define DEF_FREQUENCY_UP_THRESHOLD		(90)
